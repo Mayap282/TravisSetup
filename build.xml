@@ -26,7 +26,6 @@
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}" encoding="iso-8859-1"
 		includeantruntime="false">
         	<src path="src"/>
-        	<src path="test"/>
             <classpath refid="classpathDir"/>
         </javac>
     	<copy todir="bin">
