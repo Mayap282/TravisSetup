@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="build" name="TravisCIDemo">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
+	<property name="ARCHIVE_DIR" value="."/>
+    <path id="classpathDir">
+        <pathelement location="bin"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+    	<mkdir dir="${ARCHIVE_DIR}"/>
+    	<mkdir dir="dist"/>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    	<delete dir="${ARCHIVE_DIR}/target" />
+    	<delete dir="dist"/>
+    </target>
+    <target name="build" depends="build-project"/>
+    <target name="cleanall" depends="clean"/>
+    <target name="build-project" depends="clean,init">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}" encoding="iso-8859-1"
+		includeantruntime="false">
+        	<src path="src"/>
+        	<src path="test"/>
+            <classpath refid="classpathDir"/>
+        </javac>
+    	<copy todir="bin">
+    	    <fileset dir="src/" includes="**/*.*"/>
+    	</copy>
+    </target>
+</project>
