@@ -8,7 +8,7 @@
 	<property name="ARCHIVE_DIR" value="."/>
     <path id="classpathDir">
         <pathelement location="bin"/>
-    	<pathelement location="dep-jars/junit-4.12.jar"/>
+    	<pathelement location="dep-jars/junit.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -42,7 +42,7 @@
 		      	<formatter type="plain"/>
 		      	<formatter type="xml"/>
 				<batchtest fork="yes" todir="test-output">
-			       <fileset dir="test" includes="**/JunitSuite.java"/>
+			       <fileset dir="test" includes="**/test.java"/>
 			     </batchtest>
 			  </junit>
 		</target>  
