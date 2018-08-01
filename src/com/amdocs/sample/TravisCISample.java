@@ -1,6 +1,6 @@
 package com.amdocs.sample;
 
-public class TravisSetup {
+public class TravisCISample {
 		static void main(String []args) {
 			System.out.println("Hello");
 		}

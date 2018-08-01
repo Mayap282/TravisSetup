@@ -22,28 +22,28 @@
     	<delete dir="${ARCHIVE_DIR}/test-output"/>
     	<delete dir="dist"/>
     </target>
-    <target name="build" depends= "build-project,JUnitTests" />
+    <target name="build" depends= "build-project,test" />
     <target name="cleanall" depends="clean"/>
     <target name="build-project" depends="clean,init">
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}" encoding="iso-8859-1"
 		includeantruntime="false">
         	<src path="src"/>
-        	<src path="com/amdocs/sample/JUnitTests"/>
+        	<src path="test"/>
             <classpath refid="classpathDir"/>
         </javac>
     	<copy todir="bin">
     	    <fileset dir="src/" includes="**/*.*"/>
     	</copy>
     </target>
-	<target name="JUnitTests" depends="build-project">
+	<target name="test" depends="build-project">
 			  <junit printsummary="yes" haltonfailure="on" haltonerror="on">
 			  	<classpath refid="classpathDir"/>
 		      	<formatter type="plain"/>
 		      	<formatter type="xml"/>
 				<batchtest fork="yes" todir="test-output">
-			       <fileset dir="JUnitTests" includes="**/JunitSuite.java"/>
+			       <fileset dir="test" includes="**/JunitSuite.java"/>
 			     </batchtest>
 			  </junit>
-		</target> 
+		</target>  
 </project>
