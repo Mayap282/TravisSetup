@@ -22,21 +22,21 @@
     	<delete dir="${ARCHIVE_DIR}/test-output"/>
     	<delete dir="dist"/>
     </target>
-    <target name="build" depends= "build-project,test" />
+    <target name="build" depends= "build-project,JUnitTests" />
     <target name="cleanall" depends="clean"/>
     <target name="build-project" depends="clean,init">
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}" encoding="iso-8859-1"
 		includeantruntime="false">
         	<src path="src"/>
-        	<src path="test"/>
+        	<src path="JUnitTests"/>
             <classpath refid="classpathDir"/>
         </javac>
     	<copy todir="bin">
     	    <fileset dir="src/" includes="**/*.*"/>
     	</copy>
     </target>
-	<target name="test" depends="build-project">
+	<target name="JUnitTests" depends="build-project">
 			  <junit printsummary="yes" haltonfailure="on" haltonerror="on">
 			  	<classpath refid="classpathDir"/>
 		      	<formatter type="plain"/>
